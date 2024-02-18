@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/product"
+            android:layout_width="244dp"
+            android:layout_height="324dp"
+            android:layout_marginStart="48dp"
+            app:layout_constraintEnd_toStartOf="@id/favorite"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:drawableBottom="@drawable/baseline_like_24"
+            android:background="transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:clickable="true"/>
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="product"/>
+
+        <TextView
+            android:id="@+id/priceWithDiscount"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:gravity="center|center_horizontal"
+            android:textColor="@color/grey"
+            android:textSize="24dp"
+            app:layout_constraintTop_toBottomOf="@id/barrier_image"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="@sample/shops.json/items/price/priceWithDiscount" />
+
+        <TextView
+            android:id="@+id/priceUnitWithDiscount"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:gravity="center|center_horizontal"
+            android:textColor="@color/grey"
+            android:textSize="24dp"
+            app:layout_constraintStart_toEndOf="@id/priceWithDiscount"
+            app:layout_constraintTop_toBottomOf="@id/barrier_image"
+            tools:text="@sample/shops.json/items/price/unit" />
+
+        <TextView
+            android:id="@+id/priceCurrent"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:gravity="center|center_horizontal"
+            android:textColor="@color/black"
+            android:textSize="38dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/priceWithDiscount"
+            tools:text="@sample/shops.json/items/price/price" />
+
+        <TextView
+            android:id="@+id/priceUnit"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:gravity="center|center_horizontal"
+            android:textColor="@color/black"
+            android:textSize="36dp"
+            app:layout_constraintStart_toEndOf="@id/priceCurrent"
+            app:layout_constraintTop_toBottomOf="@id/priceWithDiscount"
+            tools:text="@sample/shops.json/items/price/unit" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/discount"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/pink"
+            android:checkable="false"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@id/priceUnit"
+            app:layout_constraintTop_toBottomOf="@id/priceWithDiscount"
+            tools:text="@sample/shops.json/items/price/discount" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="discount"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:gravity="left"
+            android:lineSpacingMultiplier="1.5"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingStart="16dp"
+            android:text="@sample/shops.json/items/title"
+            android:textSize="36dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/barrier_price"/>
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:gravity="left"
+            android:lineSpacingMultiplier="1.5"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingStart="16dp"
+            android:text="@sample/shops.json/items/subtitle"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title" />
+
+        <TextView
+            android:id="@+id/ratingImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|left"
+            android:background="transparent"
+            android:checkable="false"
+            android:drawableLeft="@drawable/baseline_star_24"
+            android:textSize="24dp"
+            android:focusable="true"
+            android:gravity="center"
+            android:paddingStart="16dp"
+            android:text="@sample/shops.json/items/feedback/rating"
+            tools:ignore="RtlHardcoded"
+            app:layout_constraintTop_toBottomOf="@id/subtitle"/>
+
+        <TextView
+            android:id="@+id/ratingCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|left"
+            android:background="transparent"
+            android:checkable="false"
+            android:textSize="24dp"
+            android:focusable="true"
+            android:gravity="center"
+            android:paddingStart="16dp"
+            android:text="@sample/shops.json/items/feedback/count"
+            tools:ignore="RtlHardcoded"
+            app:layout_constraintStart_toEndOf="@id/ratingImage"
+            app:layout_constraintTop_toBottomOf="@id/subtitle"/>
+
+        <ImageButton
+            android:id="@+id/plusButton"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:checkable="false"
+            android:gravity="center"
+            android:src="@drawable/baseline_add_24"
+            android:background="@color/pink"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ratingImage"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

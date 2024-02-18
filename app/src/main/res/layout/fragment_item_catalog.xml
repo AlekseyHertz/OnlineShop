@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.AppActivity">
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationBar"
+        android:layout_width="match_parent"
+        android:layout_height="288px"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/catalog_1"
+            android:layout_width="65dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:layout_weight="500"
+            android:contentDescription="@string/catalog"
+            android:text="@string/catalog"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/sort_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|left"
+            android:background="transparent"
+            android:checkable="true"
+            android:contentDescription="@string/sort"
+            android:drawableLeft="@drawable/baseline_swap_vert_24"
+            android:drawableRight="@drawable/baseline_down_24"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="Filters"
+            tools:ignore="RtlHardcoded" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/filter_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:background="transparent"
+            android:checkable="true"
+            android:contentDescription="@string/sort"
+            android:drawableLeft="@drawable/baseline_tune_24"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="Filters"
+            tools:ignore="RtlHardcoded" />
+
+    </com.google.android.material.navigation.NavigationView>
+
+    <HorizontalScrollView
+        android:id="@+id/tags_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@id/navigationBar">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/tags_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:chipSpacingHorizontal="12dp"
+            app:singleLine="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/all_tags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:contextClickable="true"
+                android:text="@string/all_tags"
+                app:closeIcon="@drawable/baseline_close_24"
+                app:closeIconVisible="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/face"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:contextClickable="true"
+                android:text="@string/face"
+                app:closeIcon="@drawable/baseline_close_24"
+                app:closeIconVisible="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:contextClickable="true"
+                android:text="@string/body"
+                app:closeIcon="@drawable/baseline_close_24"
+                app:closeIconVisible="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:contextClickable="true"
+                android:text="@string/sun"
+                app:closeIcon="@drawable/baseline_close_24"
+                app:closeIconVisible="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/masks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:contextClickable="true"
+                android:text="@string/masks"
+                app:closeIcon="@drawable/baseline_close_24"
+                app:closeIconVisible="true" />
+
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/tags_navigate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="tags_scroll"
+        tools:ignore="NotSibling" />
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/button_navigate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tags_navigate">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/listProduct1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/card_shop" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/listProduct2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/card_shop" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/listProduct3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/card_shop" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/listProduct4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/card_shop" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/button_navigate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="buttonPanel"
+        tools:ignore="NotSibling" />
+
+    <RelativeLayout
+        android:id="@+id/buttonPanel"
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <LinearLayout
+            android:id="@+id/button_linear"
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/basicButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:drawableBottom="@drawable/baseline_home_24"
+                android:text="Title"
+                android:textSize="12dp" />
+
+            <Button
+                android:id="@+id/catalogButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:drawableBottom="@drawable/baseline_list_alt_24"
+                android:text="@string/catalog"
+                android:textSize="12dp" />
+
+            <Button
+                android:id="@+id/basketButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:drawableBottom="@drawable/baseline_shopping_basket_24"
+                android:text="basket"
+                android:textSize="12dp" />
+
+            <Button
+                android:id="@+id/promotionButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:drawableBottom="@drawable/baseline_sale_24"
+                android:text="Sale"
+                android:textSize="12dp" />
+
+            <Button
+                android:id="@+id/profileButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:drawableBottom="@drawable/baseline_assignment_ind_24"
+                android:text="Profile"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/feedFragment">
+
+    <fragment
+        android:id="@+id/feedFragment"
+        android:name="aleksey.onlineshop.activity.FeedFragment"
+        android:label="FeedFragment" />
+    <fragment
+        android:id="@+id/itemFragment_catalog"
+        android:name="aleksey.onlineshop.ItemFragment_catalog"
+        android:label="fragment_item_catalog_list"
+        tools:layout="@layout/fragment_item_catalog_list" >
+        <action
+            android:id="@+id/action_itemFragment_catalog_to_scrollingFragment"
+            app:destination="@id/scrollingFragment" />
+        <action
+            android:id="@+id/action_itemFragment_catalog_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scrollingFragment"
+        android:name="aleksey.onlineshop.ScrollingFragment"
+        android:label="fragment_scrolling_product"
+        tools:layout="@layout/fragment_scrolling_product" >
+        <action
+            android:id="@+id/action_scrollingFragment_to_blankFragment_personal"
+            app:destination="@id/blankFragment_personal" />
+    </fragment>
+    <fragment
+        android:id="@+id/blankFragment_personal"
+        android:name="aleksey.onlineshop.BlankFragment_personal"
+        android:label="fragment_blank_fragment_personal"
+        tools:layout="@layout/fragment_blank_fragment_personal" >
+        <action
+            android:id="@+id/action_blankFragment_personal_to_blankFragment_favorites"
+            app:destination="@id/blankFragment_favorites" />
+    </fragment>
+    <fragment
+        android:id="@+id/blankFragment_favorites"
+        android:name="aleksey.onlineshop.BlankFragment_favorites"
+        android:label="fragment_blank_fragment_favorites"
+        tools:layout="@layout/fragment_blank_fragment_favorites" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="aleksey.onlineshop.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+</navigation>
